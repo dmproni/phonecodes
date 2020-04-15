@@ -1,0 +1,4 @@
+ru\rtk\App.class
+ru\rtk\service\IntegrationService.class
+ru\rtk\controller\IntegrationConroller.class
+ru\rtk\service\IntegrationServiceImpl.class
