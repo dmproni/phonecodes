@@ -1,28 +1,22 @@
 version: '3'
 services:
-  mongodb:
+  mongo:
     image: mongo:4.2.5
     networks:
-      - phonecodesnet
+      - rit-network
     ports:
-      - "27017:27017"
-    command: mongod --smallfiles --logpath=/dev/null
-  integration:
-    build: ./integration
-    ports:
-      - "8081:8081"
-    networks:
-      - phonecodesnet
-    depends_on:
-      - mongodb
-  search:
-    build: ./search
+      - 27017:27017
+    command: mongod --logpath=/dev/null
+  service:
+    build: .
     ports:
       - "8080:8080"
+    environment:
+      - spring.data.mongdb.host=mongo
     networks:
-      - phonecodesnet
+      - rit-network
     depends_on:
-      - integration
+      - mongo
 networks:
-  phonecodesnet:
+  rit-network:
     driver: "bridge"

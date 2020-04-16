@@ -1,9 +1,0 @@
-ru\rtk\controller\PhoneCodesCacheController.class
-ru\rtk\App.class
-ru\rtk\service\PhoneCodesServiceImpl.class
-ru\rtk\service\PhoneCodesLocalCacheService.class
-ru\rtk\service\PhoneCodesService.class
-ru\rtk\service\PhoneCodesLocalCacheServiceImpl.class
-ru\rtk\controller\PhoneCodesController.class
-ru\rtk\model\PhoneCode.class
-ru\rtk\model\PhoneCodeCollection.class
