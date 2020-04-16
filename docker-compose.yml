@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:4.2.5
+    networks:
+      - phonecodesnet
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles --logpath=/dev/null
+  integration:
+    build: ./integration
+    ports:
+      - "8081:8081"
+    networks:
+      - phonecodesnet
+    depends_on:
+      - mongodb
+  search:
+    build: ./search
+    ports:
+      - "8080:8080"
+    networks:
+      - phonecodesnet
+    depends_on:
+      - integration
+networks:
+  phonecodesnet:
+    driver: "bridge"

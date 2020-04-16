@@ -22,9 +22,12 @@ public class PhoneCodesController {
 
     @GetMapping("/code")
     public Collection<PhoneCode> getCodes(
-            @RequestParam(value = "country") String country) {
-        log.debug(country);
-        return phoneCodesService.searchByPartOfCountryName(country);
+            @RequestParam(value = "country", required = false) String country) {
+        if (country == null) {
+            return phoneCodesService.getAllPhoneCodes();
+        } else {
+            return phoneCodesService.searchByPartOfCountryName(country);
+        }
     }
 
 }

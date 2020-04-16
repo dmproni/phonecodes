@@ -17,13 +17,21 @@ public class PhoneCodesServiceImpl implements PhoneCodesService {
     }
 
     @Override
+    public Collection<PhoneCode> getAllPhoneCodes() {
+        log.info("getting all phone codes");
+        return cacheService.getCache();
+    }
+
+    @Override
     public Collection<PhoneCode> searchByPartOfCountryName(String countryNamePart) {
-        log.debug("searching2: " + countryNamePart);
+        log.info("searching2: " + countryNamePart);
         final Collection<PhoneCode> result =
                 cacheService.getCache().stream()
                         .filter(x -> x.getCountry().toLowerCase()
                                 .contains(countryNamePart.toLowerCase()))
-                        .collect(Collectors.toSet());
+                        .collect(Collectors.toList());
+
+        log.debug("result: " + result);
         return result;
     }
 }

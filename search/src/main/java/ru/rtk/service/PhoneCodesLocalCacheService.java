@@ -5,7 +5,6 @@ import ru.rtk.model.PhoneCode;
 import java.util.Collection;
 
 public interface PhoneCodesLocalCacheService {
-    void refresh();
-
+    void setCache(Collection<PhoneCode> newCache);
     Collection<PhoneCode> getCache();
 }

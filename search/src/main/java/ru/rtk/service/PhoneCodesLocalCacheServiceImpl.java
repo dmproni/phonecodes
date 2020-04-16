@@ -8,20 +8,21 @@ import java.util.Collection;
 
 @Service
 public class PhoneCodesLocalCacheServiceImpl implements PhoneCodesLocalCacheService {
-    private Collection<PhoneCode> cache =
-            Arrays.asList(
-                    new PhoneCode("ru", "Russia", "1111"),
-                    new PhoneCode("de", "Deutchland", "2222"),
-                    new PhoneCode("us", "USA", "5555"),
-                    new PhoneCode("la", "Latvia", "3333"),
-                    new PhoneCode("li", "Litva", "4444"));
+    private Collection<PhoneCode> cache;
 
     PhoneCodesLocalCacheServiceImpl() {
+        PhoneCode russia = new PhoneCode("ru", "Russia", "1");
+        PhoneCode france = new PhoneCode("fr", "France", "2");
+        PhoneCode latvia = new PhoneCode("la", "Latvia", "3");
+        PhoneCode litva = new PhoneCode("li", "Litva", "4");
+        PhoneCode usa = new PhoneCode("us", "USA", "5");
+        Collection<PhoneCode> collection = Arrays.asList(russia, france, latvia, litva, usa);
+        setCache(collection);
     }
 
     @Override
-    public void refresh() {
-
+    public void setCache(Collection<PhoneCode> newCache) {
+        cache = newCache;
     }
 
     @Override
