@@ -34,6 +34,7 @@ public class DefaultIntegrationService implements IntegrationService {
     @Override
     public void refresh() {
         final Collection<Country> countries = download();
+        countryRepository.deleteAll();
         countryRepository.saveAll(countries);
         cacheService.setCache(countries);
     }

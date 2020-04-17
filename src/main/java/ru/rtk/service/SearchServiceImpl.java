@@ -22,10 +22,10 @@ public class CacheSearchService implements SearchService {
     }
 
     @Override
-    public Collection<Country> findCountriesByPartOfName(Optional<String> partOfName) {
-        if (partOfName.isPresent()) {
+    public Collection<Country> findCountriesByPartOfName(String partOfName) {
+        if (Optional.ofNullable(partOfName).isPresent()) {
             return countryCacheService.getCache().stream()
-                    .filter(country -> containsIgnoreCase(country.getName(), partOfName.get()))
+                    .filter(country -> containsIgnoreCase(country.getName(), partOfName))
                     .collect(Collectors.toList());
         } else {
             return countryCacheService.getCache();
