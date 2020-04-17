@@ -3,35 +3,28 @@ package ru.rtk.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.rtk.model.Country;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
-@ActiveProfiles("test")
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class SearchServiceTest {
-    @Autowired
-    private SearchService searchService;
-    @Autowired
-    private CountryCacheService cacheService;
-
     private static Country russia;
     private static Country finland;
     private static Country poland;
     private static Country latvia;
     private static Country litva;
     private static List<Country> defaultCache;
+    @Autowired
+    private SearchService searchService;
+    @MockBean
+    private CountryCacheService cacheService;
 
     @BeforeAll
     static void setBeforeAll() {
@@ -48,10 +41,10 @@ public class SearchServiceTest {
     void test() {
         Mockito.when(cacheService.getCache()).thenReturn(defaultCache);
 
-        Assertions.assertEquals(Arrays.asList(latvia, litva), searchService.findCountriesByPartOfName(Optional.of("Tv")));
-        Assertions.assertEquals(Arrays.asList(finland, poland, latvia), searchService.findCountriesByPartOfName(Optional.of("la")));
-        Assertions.assertEquals(Arrays.asList(), searchService.findCountriesByPartOfName(Optional.of("abracardab")));
-        Assertions.assertEquals(defaultCache, searchService.findCountriesByPartOfName(Optional.of("")));
-        Assertions.assertEquals(defaultCache, searchService.findCountriesByPartOfName(Optional.ofNullable(null)));
+        Assertions.assertEquals(Arrays.asList(latvia, litva), searchService.findCountriesByPartOfName("Tv"));
+        Assertions.assertEquals(Arrays.asList(finland, poland, latvia), searchService.findCountriesByPartOfName("la"));
+        Assertions.assertEquals(Arrays.asList(), searchService.findCountriesByPartOfName("abracardab"));
+        Assertions.assertEquals(defaultCache, searchService.findCountriesByPartOfName(""));
+        Assertions.assertEquals(defaultCache, searchService.findCountriesByPartOfName(null));
     }
 }

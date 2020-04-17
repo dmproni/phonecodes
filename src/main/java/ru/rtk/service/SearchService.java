@@ -6,5 +6,5 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface SearchService {
-    Collection<Country> findCountriesByPartOfName(Optional<String> partOfName);
+    Collection<Country> findCountriesByPartOfName(String partOfName);
 }

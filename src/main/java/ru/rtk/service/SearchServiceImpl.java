@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 import static ru.rtk.utils.SearchUtils.containsIgnoreCase;
 
 @Service
-public class CacheSearchService implements SearchService {
+public class SearchServiceImpl implements SearchService {
     private CountryCacheService countryCacheService;
     private CountryRepository countryRepository;
 
-    public CacheSearchService(CountryCacheService countryCacheService, CountryRepository countryRepository) {
+    public SearchServiceImpl(CountryCacheService countryCacheService, CountryRepository countryRepository) {
         this.countryCacheService = countryCacheService;
         this.countryRepository = countryRepository;
     }

@@ -15,7 +15,7 @@ import java.util.*;
 import static ru.rtk.utils.JsonUtils.jsonBodyToMap;
 
 @Service
-public class DefaultIntegrationService implements IntegrationService {
+public class IntegrationServiceImpl implements IntegrationService {
     private CountryRepository countryRepository;
     private CountryCacheService cacheService;
 
@@ -26,7 +26,7 @@ public class DefaultIntegrationService implements IntegrationService {
     @Value("${phoneCodesJsonName}")
     private String phoneCodesJsonName;
 
-    public DefaultIntegrationService(CountryRepository countryRepository, CountryCacheService cacheService) {
+    public IntegrationServiceImpl(CountryRepository countryRepository, CountryCacheService cacheService) {
         this.countryRepository = countryRepository;
         this.cacheService = cacheService;
     }

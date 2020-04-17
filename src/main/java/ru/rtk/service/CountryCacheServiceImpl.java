@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
-public class SimpleCountryCacheService implements CountryCacheService {
+public class CountryCacheServiceImpl implements CountryCacheService {
     private Collection<Country> cache = new ArrayList<>();
     private CountryRepository countryRepository;
 
-    public SimpleCountryCacheService(CountryRepository countryRepository) {
+    public CountryCacheServiceImpl(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
     }
 

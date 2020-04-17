@@ -22,7 +22,7 @@ public class SearchController {
     @GetMapping("/code")
     public Collection<Country> getCountries(
             @RequestParam(value = "country", required = false) String countryCode) {
-        return searchService.findCountriesByPartOfName(Optional.ofNullable(countryCode));
+        return searchService.findCountriesByPartOfName(countryCode);
     }
 
 }
